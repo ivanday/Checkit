@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-
+/*global chrome*/
 function App() {
   return (
     <div className="App">
@@ -16,6 +16,12 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+        <div>
+          {chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+            let url = tabs[0].url;
+            console.log(url);
+          })}
+        </div>
         </a>
       </header>
     </div>
