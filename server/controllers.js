@@ -20,3 +20,7 @@ exports.getRedditPosts = (req, res) => {
     res.status(200).end();
   })
 };
+
+exports.getRedditComments = (req, res) => {
+
+};
