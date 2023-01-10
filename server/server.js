@@ -2,10 +2,17 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const controllers = require('./controllers.js');
+const cors = require('cors');
 
 const port = 4000;
 
+let corsOptions = {
+  origin: '*',
+  optionsSuccessStatus: 200
+}
+
 const app = express();
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
