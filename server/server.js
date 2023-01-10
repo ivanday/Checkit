@@ -11,6 +11,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/reddit_posts', controllers.getRedditPosts);
 
+app.get('/reddit_comments', controllers.getRedditComments);
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
