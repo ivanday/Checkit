@@ -12,7 +12,8 @@ const axios = require('axios');
 exports.getRedditPosts = (req, res) => {
   let permalinks = [];
   console.log('getting request...');
-  axios.get(`http://www.reddit.com/search.json?q=${req.body.url}&sort=new&limit=5`)
+  console.log(req.query.url);
+  axios.get(`http://www.reddit.com/search.json?q=${req.query.url}&sort=relevant&limit=5`)
   .then((response) => {
     for (const post of response.data.data.children) {
       permalinks.push(post.data.permalink);
