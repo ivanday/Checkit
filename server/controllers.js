@@ -15,11 +15,16 @@ exports.getRedditPosts = (req, res) => {
   console.log(req.query.url);
   axios.get(`http://www.reddit.com/search.json?q=${req.query.url}&sort=relevant&limit=5`)
   .then((response) => {
-    for (const post of response.data.data.children) {
-      permalinks.push(post.data.permalink);
+    if (response.data.data.children) {
+      for (const post of response.data.data.children) {
+        permalinks.push(post.data.permalink);
+      }
+      res.send(permalinks);
+      res.status(200).end();
     }
-    res.send(permalinks);
-    res.status(200).end();
+  })
+  .catch((err) => {
+    console.log(err);
   })
 };
 
