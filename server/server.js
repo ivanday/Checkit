@@ -9,10 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/reddit_posts', (req, res) => {
-  console.log(req);
-  res.status(200).end();
-});
+app.get('/reddit_posts', controllers.getRedditPosts);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

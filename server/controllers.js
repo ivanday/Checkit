@@ -10,5 +10,13 @@ const axios = require('axios');
 //   })
 
 exports.getRedditPosts = (req, res) => {
-  console.log(req);
+  let permalinks = [];
+  axios.get(`http://www.reddit.com/search.json?q=${req.body.url}&sort=new&limit=5`)
+  .then((response) => {
+    for (const post of response.data.data.children) {
+      permalinks.push(post.data.permalink);
+    }
+    res.send(permalinks);
+    res.status(200).end();
+  })
 };
