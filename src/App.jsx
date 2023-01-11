@@ -1,5 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
+import Post from './Post.jsx';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 /*global chrome*/
@@ -24,16 +25,15 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <h1>Posts at your url: </h1>
+      <h1 class="postsAtUrl">Posts at your url: </h1>
       <div>
         <ul>
         {
           redditLinks.length > 0 &&
             redditLinks.map(link => {
               console.log(link);
-              return (
-                <li>{link}</li>
-              );
+
+              return <Post link={link} />
             })
 
         }
