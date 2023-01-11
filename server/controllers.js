@@ -29,5 +29,8 @@ exports.getRedditPosts = (req, res) => {
 };
 
 exports.getRedditComments = (req, res) => {
-
+  axios.get(`http://www.reddit.com/comments/${req.query.url}$sort=top`)
+  .then((response) => {
+    console.log(response);
+  })
 };
