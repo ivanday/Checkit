@@ -29,8 +29,12 @@ exports.getRedditPosts = (req, res) => {
 };
 
 exports.getRedditComments = (req, res) => {
-  axios.get(`http://www.reddit.com/comments/${req.query.url}$sort=top`)
+  axios.get(`https://www.reddit.com/r/redditdev/comments/cdio0t.json?`)
   .then((response) => {
-    console.log(response);
+    console.log(response.data[1].data.children);
+    // res.send(response);
+  })
+  .catch((err) => {
+    console.log(err);
   })
 };
