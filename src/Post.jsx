@@ -22,7 +22,8 @@ export default function Post({link}) {
 
   return (
     <li>
-      <button id={link}>{link}</button>
+      <button id={link} class="post-button">{link}</button>
+      <br></br>
       <Comments urlLink={urlLink} />
     </li>
   );
