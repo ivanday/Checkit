@@ -26,7 +26,6 @@ function App() {
     <div className="App">
       <h1>Posts at your url: </h1>
       <div>
-        <h2>links</h2>
         <ul>
         {
           redditLinks.length > 0 &&
