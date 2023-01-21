@@ -30,10 +30,10 @@ function App() {
         <ul>
         {
           redditLinks.length > 0 &&
-            redditLinks.map(link => {
-              console.log(link);
+            redditLinks.map(post => {
+              console.log(post.permalink);
 
-              return <Post link={link} />
+              return <Post post={post} />
             })
 
         }

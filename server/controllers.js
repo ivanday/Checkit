@@ -12,12 +12,18 @@ const axios = require('axios');
 exports.getRedditPosts = (req, res) => {
   let permalinks = [];
   console.log('getting request...');
-  console.log(req.query.url);
   axios.get(`http://www.reddit.com/search.json?q=${req.query.url}&sort=relevant&limit=5`)
   .then((response) => {
+    //console.log(response.data.data.children);
     if (response.data.data.children) {
+      console.log(response.data.data.children[0]);
       for (const post of response.data.data.children) {
-        permalinks.push(post.data.permalink);
+        permalinks.push({
+          permalink: post.data.permalink,
+          id: post.data.id,
+          subreddit: post.data.subreddit,
+          title: post.data.title
+        });
       }
       res.send(permalinks);
       res.status(200).end();
@@ -29,12 +35,17 @@ exports.getRedditPosts = (req, res) => {
 };
 
 exports.getRedditComments = (req, res) => {
-  axios.get(`https://www.reddit.com/r/redditdev/comments/cdio0t.json?`)
+  console.log('getting comments...');
+  axios.get(`https://www.reddit.com/r/${req.query.subreddit}/comments/${req.query.id}.json?`)
   .then((response) => {
-    console.log(response.data[1].data.children);
+    // console.log(response.data[1].data.children);
+    res.send(response.data[1].data.children);
+    res.end();
     // res.send(response);
   })
   .catch((err) => {
     console.log(err);
+    res.end();
+    //console.log(err);
   })
 };

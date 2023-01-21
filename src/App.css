@@ -9,3 +9,25 @@
   margin: 0;
   padding: 0;
 }
+
+.score {
+  color: green;
+}
+
+.post-box {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.subreddit-title-container {
+  flex: 1;
+  width: 80%;
+}
+
+.comment-button-container {
+  width: 20%;
+}
+
+.subreddit {
+  color: #ff4500;
+}
